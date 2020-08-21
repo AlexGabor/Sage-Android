@@ -1,11 +1,18 @@
 package com.alexgabor.sage.screen.addrecipe
 
 import com.alexgabor.sage.arch.Controller
+import com.alexgabor.sage.core.AddRecipeUseCase
+import com.alexgabor.sage.core.model.Recipe
+import com.alexgabor.sage.navigation.Navigation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class AddRecipeController @Inject constructor() : Controller() {
+class AddRecipeController @Inject constructor(
+    private val navigation: Navigation,
+    private val addRecipe: AddRecipeUseCase,
+) : Controller() {
 
     private val _title = MutableStateFlow("")
     val title: StateFlow<String> = _title
@@ -45,6 +52,13 @@ class AddRecipeController @Inject constructor() : Controller() {
     }
 
     fun onSubmit() {
-
+        controllerScope.launch {
+            addRecipe(Recipe(
+                title = title.value,
+                ingredients = ingredients.value,
+                steps = ingredients.value
+            ))
+            navigation.navigate(Navigation.Screen.MyRecipes)
+        }
     }
 }

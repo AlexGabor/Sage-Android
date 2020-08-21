@@ -1,11 +1,12 @@
 package com.alexgabor.sage.screen
 
-import androidx.compose.foundation.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.alexgabor.sage.arch.controller
 import com.alexgabor.sage.navigation.Navigation
+import com.alexgabor.sage.screen.addrecipe.AddRecipeScreen
+import com.alexgabor.sage.screen.recipelist.RecipeListScreen
 
 @Composable
 fun Navigator() {
@@ -18,7 +19,7 @@ fun Navigator() {
 @Composable
 fun Screen(state: Navigation.Screen) {
     when (state) {
-        Navigation.Screen.MyRecipes -> Text(text = "MyRecipes")
-        Navigation.Screen.AddRecipe -> Text(text = "AddRecipe")
+        Navigation.Screen.MyRecipes -> RecipeListScreen()
+        Navigation.Screen.AddRecipe -> AddRecipeScreen()
     }
 }

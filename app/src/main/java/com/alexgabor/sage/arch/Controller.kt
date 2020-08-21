@@ -13,7 +13,7 @@ import kotlinx.coroutines.cancel
 
 open class Controller {
 
-    private val controllerScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+    protected val controllerScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     open fun onCleared() {
 

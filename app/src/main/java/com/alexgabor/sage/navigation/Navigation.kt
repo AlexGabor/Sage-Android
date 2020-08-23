@@ -1,5 +1,6 @@
 package com.alexgabor.sage.navigation
 
+import com.alexgabor.sage.core.model.Recipe
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
@@ -18,5 +19,6 @@ class Navigation @Inject constructor() {
     sealed class Screen {
         object MyRecipes : Screen()
         object AddRecipe : Screen()
+        class RecipeDetail(val recipe: Recipe) : Screen()
     }
 }

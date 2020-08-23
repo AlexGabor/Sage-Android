@@ -56,7 +56,7 @@ class AddRecipeController @Inject constructor(
             addRecipe(Recipe(
                 title = title.value,
                 ingredients = ingredients.value,
-                steps = ingredients.value
+                steps = steps.value
             ))
             navigation.navigate(Navigation.Screen.MyRecipes)
         }

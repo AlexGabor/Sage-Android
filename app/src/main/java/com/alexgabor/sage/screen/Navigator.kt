@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import com.alexgabor.sage.arch.controller
 import com.alexgabor.sage.navigation.Navigation
 import com.alexgabor.sage.screen.addrecipe.AddRecipeScreen
+import com.alexgabor.sage.screen.recipedetail.RecipeDetailScreen
 import com.alexgabor.sage.screen.recipelist.RecipeListScreen
 
 @Composable
@@ -21,5 +22,6 @@ fun Screen(state: Navigation.Screen) {
     when (state) {
         Navigation.Screen.MyRecipes -> RecipeListScreen()
         Navigation.Screen.AddRecipe -> AddRecipeScreen()
+        is Navigation.Screen.RecipeDetail -> RecipeDetailScreen(state.recipe)
     }
 }

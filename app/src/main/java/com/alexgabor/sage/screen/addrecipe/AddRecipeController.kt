@@ -1,8 +1,10 @@
 package com.alexgabor.sage.screen.addrecipe
 
 import com.alexgabor.sage.arch.Controller
-import com.alexgabor.sage.core.AddRecipeUseCase
+import com.alexgabor.sage.core.model.Ingredient
+import com.alexgabor.sage.core.usecase.AddRecipeUseCase
 import com.alexgabor.sage.core.model.Recipe
+import com.alexgabor.sage.core.model.Step
 import com.alexgabor.sage.navigation.Navigation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -55,8 +57,8 @@ class AddRecipeController @Inject constructor(
         controllerScope.launch {
             addRecipe(Recipe(
                 title = title.value,
-                ingredients = ingredients.value,
-                steps = steps.value
+                ingredients = ingredients.value.map { Ingredient(text = it) },
+                steps = steps.value.map { Step(text = it) }
             ))
             navigation.navigate(Navigation.Screen.MyRecipes)
         }

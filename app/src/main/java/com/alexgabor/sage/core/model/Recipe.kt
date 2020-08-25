@@ -1,10 +1,10 @@
 package com.alexgabor.sage.core.model
 
 data class Recipe(
-    val id: Int = NO_ID,
+    val id: Long = NO_ID,
     val title: String,
-    val ingredients: List<String>,
-    val steps: List<String>
+    val ingredients: List<Ingredient>,
+    val steps: List<Step>
 )
 
-const val NO_ID = -1
+const val NO_ID = -1L

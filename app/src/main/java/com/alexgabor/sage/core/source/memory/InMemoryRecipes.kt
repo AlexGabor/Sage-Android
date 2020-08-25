@@ -1,4 +1,4 @@
-package com.alexgabor.sage.core.source
+package com.alexgabor.sage.core.source.memory
 
 import com.alexgabor.sage.core.model.Recipe
 import kotlinx.coroutines.delay
@@ -10,7 +10,7 @@ import javax.inject.Singleton
 @Singleton
 class InMemoryRecipes @Inject constructor() {
 
-    private var id = 0
+    private var id = 0L
 
     private val _recipes = MutableStateFlow<List<Recipe>>(emptyList())
     internal val recipes: StateFlow<List<Recipe>> = _recipes

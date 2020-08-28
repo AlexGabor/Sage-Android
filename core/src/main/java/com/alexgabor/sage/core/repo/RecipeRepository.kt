@@ -1,7 +1,7 @@
 package com.alexgabor.sage.core.repo
 
-import com.alexgabor.sage.core.model.Recipe
 import com.alexgabor.sage.core.model.Ingredient
+import com.alexgabor.sage.core.model.Recipe
 import com.alexgabor.sage.core.model.Step
 import com.alexgabor.sage.core.source.local.*
 import kotlinx.coroutines.flow.map
@@ -9,7 +9,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RecipeRepository @Inject constructor(private val recipeDao: RecipeDao) {
+class RecipeRepository @Inject internal constructor(private val recipeDao: RecipeDao) {
 
     suspend fun insertRecipe(recipe: Recipe): Long {
         val recipeIds = recipeDao.insertRecipe(recipe.toRecipeEntity())[0].let { recipeId ->

@@ -1,2 +1,3 @@
 rootProject.name = "Sage"
 include ':app'
+include ':core'

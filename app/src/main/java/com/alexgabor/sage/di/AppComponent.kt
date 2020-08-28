@@ -1,12 +1,19 @@
 package com.alexgabor.sage.di
 
 import android.content.Context
+import com.alexgabor.sage.core.dagger.CoreModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [DbModule::class])
+@Component(
+    modules = [
+        AssistedModule::class,
+        AppModule::class,
+        CoreModule::class,
+    ],
+)
 interface AppComponent {
 
     @Component.Factory
@@ -14,5 +21,5 @@ interface AppComponent {
         fun create(@BindsInstance context: Context): AppComponent
     }
 
-    fun controllerComponent(): ControllerComponent
+    fun controllerComponent(): ControllerComponent.Factory
 }

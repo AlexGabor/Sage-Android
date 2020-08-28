@@ -7,8 +7,14 @@ import com.alexgabor.sage.screen.recipelist.RecipeListController
 import dagger.Subcomponent
 
 @ControllerScope
-@Subcomponent(modules = [AssistedModule::class])
+@Subcomponent
 interface ControllerComponent {
+
+    @Subcomponent.Factory
+    interface Factory {
+        fun create(): ControllerComponent
+    }
+
     val navigatorController: NavigatorController
     val addRecipeController: AddRecipeController
     val recipeListController: RecipeListController

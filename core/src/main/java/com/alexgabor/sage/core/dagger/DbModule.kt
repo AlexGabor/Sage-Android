@@ -1,4 +1,4 @@
-package com.alexgabor.sage.di
+package com.alexgabor.sage.core.dagger
 
 import android.content.Context
 import androidx.room.Room
@@ -12,10 +12,12 @@ import javax.inject.Singleton
 object DbModule {
 
     @Singleton
+    @JvmStatic
     @Provides
-    fun provideDatabase(context: Context): RecipeDatabase = Room.databaseBuilder(context, RecipeDatabase::class.java, "RecipeDatabase").build()
+    internal fun provideDatabase(context: Context): RecipeDatabase = Room.databaseBuilder(context, RecipeDatabase::class.java, "RecipeDatabase").build()
 
     @Singleton
+    @JvmStatic
     @Provides
-    fun provideRecipeDao(recipeDatabase: RecipeDatabase): RecipeDao = recipeDatabase.recipeDao()
+    internal fun provideRecipeDao(recipeDatabase: RecipeDatabase): RecipeDao = recipeDatabase.recipeDao()
 }

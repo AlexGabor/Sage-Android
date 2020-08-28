@@ -6,14 +6,14 @@ import androidx.room.PrimaryKey
 import androidx.room.Relation
 
 @Entity(tableName = "recipes")
-data class RecipeEntity(
+internal data class RecipeEntity(
     @PrimaryKey(autoGenerate = true)
     val recipeId: Long = 0,
     val title: String,
 )
 
 @Entity(tableName = "ingredients")
-data class IngredientEntity(
+internal data class IngredientEntity(
     @PrimaryKey(autoGenerate = true)
     val ingredientId: Long = 0,
     val ingredientRecipeId: Long,
@@ -22,7 +22,7 @@ data class IngredientEntity(
 )
 
 @Entity(tableName = "steps")
-data class StepEntity(
+internal data class StepEntity(
     @PrimaryKey(autoGenerate = true)
     val stepId: Long = 0,
     val stepRecipeId: Long,
@@ -30,7 +30,7 @@ data class StepEntity(
     val text: String,
 )
 
-data class RecipeWithIngredientsAndSteps(
+internal data class RecipeWithIngredientsAndSteps(
     @Embedded val recipeEntity: RecipeEntity,
     @Relation(
         parentColumn = "recipeId",

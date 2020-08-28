@@ -7,4 +7,4 @@ data class Recipe(
     val steps: List<Step>
 )
 
-const val NO_ID = -1L
+const val NO_ID = 0L

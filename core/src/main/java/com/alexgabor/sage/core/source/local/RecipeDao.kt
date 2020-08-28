@@ -4,7 +4,7 @@ import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface RecipeDao {
+internal interface RecipeDao {
 
     @Transaction
     @Query("SELECT * from recipes")

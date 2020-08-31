@@ -12,8 +12,17 @@ class Navigation @Inject constructor() {
     private val _navigationEvent = MutableStateFlow<Screen>(Screen.MyRecipes)
     val navigationEvent: StateFlow<Screen> = _navigationEvent
 
+    private val stack = mutableListOf<Screen>()
+
     fun navigate(screen: Screen) {
+        stack.add(navigationEvent.value)
         _navigationEvent.value = screen
+    }
+
+    fun goBack(): Boolean {
+        if (stack.isEmpty()) return false
+        _navigationEvent.value = stack.removeLast()
+        return true
     }
 
     sealed class Screen {

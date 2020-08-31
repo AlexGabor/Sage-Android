@@ -1,5 +1,6 @@
 package com.alexgabor.sage.screen
 
+import androidx.compose.animation.Crossfade
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -14,7 +15,9 @@ fun Navigator() {
     val controller by controller { navigatorController }
     val screen by controller.navigationEvent.collectAsState()
 
-    Screen(screen)
+    Crossfade(screen) { currentScreen ->
+        Screen(currentScreen)
+    }
 }
 
 @Composable

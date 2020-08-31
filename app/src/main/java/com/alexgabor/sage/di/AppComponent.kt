@@ -1,6 +1,7 @@
 package com.alexgabor.sage.di
 
 import android.content.Context
+import com.alexgabor.sage.MainActivity
 import com.alexgabor.sage.core.dagger.CoreModule
 import dagger.BindsInstance
 import dagger.Component
@@ -20,6 +21,8 @@ interface AppComponent {
     interface Factory {
         fun create(@BindsInstance context: Context): AppComponent
     }
+
+    fun inject(mainActivity: MainActivity)
 
     fun controllerComponent(): ControllerComponent.Factory
 }

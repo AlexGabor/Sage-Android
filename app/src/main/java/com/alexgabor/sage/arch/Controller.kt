@@ -1,11 +1,10 @@
 package com.alexgabor.sage.arch
 
+import android.util.Log
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.onDispose
-import androidx.compose.runtime.state
-import com.alexgabor.sage.SageApplication
-import com.alexgabor.sage.di.ControllerComponent
+import com.alexgabor.sage.Controllers
+import com.alexgabor.sage.HostActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -26,10 +25,14 @@ open class Controller {
 }
 
 @Composable
-inline fun <T: Controller> controller(init: ControllerComponent.() -> T): State<T> {
-    val vm = state { controllerComponent().init() }
-    onDispose { vm.value.clear() }
-    return vm
+inline fun <reified T: Controller> controller(): T {
+    val controllers = Controllers.current
+    val host = HostActivity.current
+    onDispose {
+        if (!host.isChangingConfigurations) {
+            Log.d("sageee", "dispose")
+            controllers.clear(T::class.java)
+        }
+    }
+    return controllers.getController(T::class.java)
 }
-
-fun controllerComponent() = SageApplication.app.controllerComponent

@@ -26,7 +26,7 @@ import com.alexgabor.sage.core.model.Step
 
 @Composable
 fun RecipeListScreen() {
-    val controller by controller { recipeListController }
+    val controller = controller<RecipeListController>()
     val recipes by controller.recipes.collectAsState(initial = listOf())
 
     Column {

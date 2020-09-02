@@ -12,7 +12,7 @@ import com.alexgabor.sage.screen.recipelist.RecipeListScreen
 
 @Composable
 fun Navigator() {
-    val controller by controller { navigatorController }
+    val controller = controller<NavigatorController>()
     val screen by controller.navigationEvent.collectAsState()
 
     Crossfade(screen) { currentScreen ->

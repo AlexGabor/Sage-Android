@@ -23,7 +23,7 @@ import com.alexgabor.sage.arch.controller
 @Preview
 @Composable
 fun AddRecipeScreen() {
-    val controller by controller { addRecipeController }
+    val controller = controller<AddRecipeController>()
     val title by controller.title.collectAsState()
     val ingredients by controller.ingredients.collectAsState()
     val steps by controller.steps.collectAsState()

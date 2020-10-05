@@ -3,10 +3,7 @@ package com.alexgabor.sage.screen.addrecipe
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Stack
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.IconButton
 import androidx.compose.material.TextField
@@ -29,8 +26,8 @@ fun AddRecipeScreen() {
     val steps by controller.steps.collectAsState()
 
     Column {
-        Stack(modifier = Modifier.fillMaxWidth()) {
-            IconButton(onClick = { controller.onSubmit() }, modifier = Modifier.gravity(Alignment.CenterEnd)) {
+        Box(modifier = Modifier.fillMaxWidth()) {
+            IconButton(onClick = { controller.onSubmit() }, modifier = Modifier.align(Alignment.CenterEnd)) {
                 Icon(asset = Icons.Outlined.Done)
             }
         }

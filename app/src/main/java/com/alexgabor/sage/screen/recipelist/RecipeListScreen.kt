@@ -3,8 +3,8 @@ package com.alexgabor.sage.screen.recipelist
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Stack
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.material.IconButton
@@ -30,8 +30,8 @@ fun RecipeListScreen() {
     val recipes by controller.recipes.collectAsState(initial = listOf())
 
     Column {
-        Stack(modifier = Modifier.fillMaxWidth()) {
-            IconButton(onClick = { controller.onAdd() }, modifier = Modifier.gravity(Alignment.CenterEnd)) {
+        Box(modifier = Modifier.fillMaxWidth()) {
+            IconButton(onClick = { controller.onAdd() }, modifier = Modifier.align(Alignment.CenterEnd)) {
                 Icon(asset = Icons.Outlined.Add)
             }
         }

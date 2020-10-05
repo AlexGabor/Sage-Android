@@ -48,7 +48,7 @@ dependencies {
     implementation "androidx.core:core-ktx:${versions.androidxCore}"
     implementation "androidx.appcompat:appcompat:${versions.androidxAppCompat}"
 
-    implementation "androidx.compose:compose-compiler:${versions.compose}"
+    implementation "androidx.compose.compiler:compiler:${versions.compose}"
     implementation "androidx.compose.runtime:runtime:${versions.compose}"
     implementation "androidx.compose.runtime:runtime-livedata:${versions.compose}"
     implementation "androidx.compose.ui:ui:${versions.compose}"

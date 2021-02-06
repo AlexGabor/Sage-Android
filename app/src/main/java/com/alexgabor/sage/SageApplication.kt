@@ -1,7 +1,7 @@
 package com.alexgabor.sage
 
+
 import android.app.Application
-import com.alexgabor.sage.core.dagger.DaggerCoreComponent
 import com.alexgabor.sage.di.AppComponent
 import com.alexgabor.sage.di.ControllerComponent
 import com.alexgabor.sage.di.DaggerAppComponent

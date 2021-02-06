@@ -1,14 +1,15 @@
 package com.alexgabor.sage.screen.recipelist
 
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.ListItem
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.runtime.Composable
@@ -32,11 +33,13 @@ fun RecipeListScreen() {
     Column {
         Box(modifier = Modifier.fillMaxWidth()) {
             IconButton(onClick = { controller.onAdd() }, modifier = Modifier.align(Alignment.CenterEnd)) {
-                Icon(asset = Icons.Outlined.Add)
+                Icon(Icons.Outlined.Add, "Add")
             }
         }
-        LazyColumnFor(items = recipes) { recipe ->
-            RecipeItem(recipe, onClick = { controller.onRecipeClick(recipe) })
+        LazyColumn {
+            items(items = recipes, itemContent = { recipe ->
+                RecipeItem(recipe, onClick = { controller.onRecipeClick(recipe) })
+            })
         }
     }
 }

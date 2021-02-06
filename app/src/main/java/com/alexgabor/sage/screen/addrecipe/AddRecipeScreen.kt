@@ -1,12 +1,13 @@
 package com.alexgabor.sage.screen.addrecipe
 
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.IconButton
-import androidx.compose.material.TextField
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Done
 import androidx.compose.runtime.Composable
@@ -28,23 +29,29 @@ fun AddRecipeScreen() {
     Column {
         Box(modifier = Modifier.fillMaxWidth()) {
             IconButton(onClick = { controller.onSubmit() }, modifier = Modifier.align(Alignment.CenterEnd)) {
-                Icon(asset = Icons.Outlined.Done)
+                Icon(Icons.Outlined.Done, "Done")
             }
         }
-        ScrollableColumn(modifier = Modifier.fillMaxSize()) {
-            TextField(value = title, onValueChange = { controller.onTitleChange(it) }, label = { Text(text = "Title") })
-
-            Button(onClick = {}) { Text(text = "Add cover") }
-
-            ingredients.forEachIndexed { index, text ->
+        rememberScrollState(0f)
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
+            item {
+                TextField(value = title, onValueChange = { controller.onTitleChange(it) }, label = { Text(text = "Title") })
+            }
+            item {
+                Button(onClick = {}) { Text(text = "Add cover") }
+            }
+            itemsIndexed(ingredients) { index, text ->
                 TextField(value = text, onValueChange = { controller.onIngredientChange(index, it) }, label = { Text(text = "Ingredient") })
             }
-            Button(onClick = { controller.onAddIngredient() }) { Text(text = "Add ingredient") }
-
-            steps.forEachIndexed { index, text ->
+            item {
+                Button(onClick = { controller.onAddIngredient() }) { Text(text = "Add ingredient") }
+            }
+            itemsIndexed(steps) { index, text ->
                 TextField(value = text, onValueChange = { controller.onStepChange(index, it) }, label = { Text(text = "Step") })
             }
-            Button(onClick = { controller.onAddStep() }) { Text(text = "Add step") }
+            item {
+                Button(onClick = { controller.onAddStep() }) { Text(text = "Add step") }
+            }
         }
     }
 }

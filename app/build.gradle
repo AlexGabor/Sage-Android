@@ -36,7 +36,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerVersion "1.4.0-dev-withExperimentalGoogleExtensions-20200720"
+        kotlinCompilerVersion "1.4.21-2"
         kotlinCompilerExtensionVersion versions.compose
     }
 }
@@ -57,7 +57,7 @@ dependencies {
     implementation "androidx.compose.material:material-icons-extended:${versions.compose}"
     implementation "androidx.compose.foundation:foundation:${versions.compose}"
     implementation "androidx.compose.animation:animation:${versions.compose}"
-    implementation "androidx.ui:ui-tooling:${versions.compose}"
+    implementation "androidx.ui:ui-tooling:${versions.ui}"
 
     implementation "com.google.dagger:dagger:${versions.dagger}"
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
